@@ -1,0 +1,12 @@
+#toolbar {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+  max-height: 80%;
+  color: #fff;
+}

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Viewer, CesiumComponentRef, CameraFlyTo } from 'resium';
-import { Viewer as CesiumViewer, Cartesian3 } from 'cesium';
+import { Viewer, CesiumComponentRef } from 'resium';
+import { Viewer as CesiumViewer } from 'cesium';
 import { Box, Heading } from '@chakra-ui/react';
 import Satellite from './satellite/Satellite';
 import satellites from './satellites';
@@ -12,7 +12,9 @@ const MapViewer: React.FC = () => {
   const ref = useRef<CesiumComponentRef<CesiumViewer> | null>(null);
   // set all satellites to selected by default, add their satelliteId to the selectedSatellites array
   const [selectedSatellites, setSelectedSatellites] = useState<number[]>(
-    Object.values(satellites).map((satellite) => satellite.satelliteId)
+    Object.values(satellites).map(
+      (satellite: SatelliteInfo) => satellite.satelliteId
+    )
   );
 
   return (
@@ -33,9 +35,6 @@ const MapViewer: React.FC = () => {
           ref={ref}
           id="viewer"
         >
-          <CameraFlyTo
-            destination={Cartesian3.fromDegrees(-101, 35, 10000000)}
-          />
           {selectedSatellites.map((satelliteId) => (
             <Satellite key={satelliteId} satId={satelliteId} />
           ))}
