@@ -10,7 +10,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from './Logo';
 interface Props {
-  children: React.ReactNode;
+  children: string;
 }
 
 const Links = ['About', 'Map', 'Contact'];
@@ -28,7 +28,7 @@ const NavLink = (props: Props) => {
         textDecoration: 'none',
         bg: useColorModeValue('green.200', 'green.700'),
       }}
-      href={`#${children.toLowerCase()}`}
+      href={`#${children?.toLowerCase()}`}
     >
       {children}
     </Box>
