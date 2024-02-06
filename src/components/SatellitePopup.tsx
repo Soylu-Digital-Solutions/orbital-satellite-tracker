@@ -32,20 +32,30 @@ const SatellitePopup = ({
   selectedSatellites,
 }: SatellitePopupProps) => {
   const [openCountries, setOpenCountries] = useState<OpenCountries>({});
-  const [parentElement, setParentElement] = useState<HTMLElement | null>(null);
+  const [top, setTop] = useState<number>(0);
+  const [left, setLeft] = useState<number>(0);
+  const [resized, setResized] = useState<boolean>(false);
 
   useEffect(() => {
     const parent = document.getElementById('viewer');
-    setParentElement(parent);
-  }, []);
+    if (!parent) return;
+    setTop(parent.offsetTop + 10);
+    setLeft(parent.offsetLeft + 10);
+
+    window.addEventListener('resize', toggleResized);
+
+    return () => {
+      window.removeEventListener('resize', toggleResized);
+    };
+  }, [resized]);
+
+  const toggleResized = () => {
+    setResized((prev: boolean) => !prev);
+  };
 
   const toggleCountry = (country: string) => {
     setOpenCountries((prev) => ({ ...prev, [country]: !prev[country] }));
   };
-
-  // Add some basic styles to ensure the popup is visible and positioned correctly
-  const parentTop = parentElement?.offsetTop || 0;
-  const parentLeft = parentElement?.offsetLeft || 0;
 
   const handleSatelliteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
@@ -63,7 +73,10 @@ const SatellitePopup = ({
   return (
     <div
       id="toolbar"
-      style={{ top: `${parentTop + 10}px`, left: `${parentLeft + 10}px` }}
+      style={{
+        top: `${top}px`,
+        left: `${left}px`,
+      }}
     >
       <Heading as="h3" size="md" p={1}>
         Toggle Satellites
