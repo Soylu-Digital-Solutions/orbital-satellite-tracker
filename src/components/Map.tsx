@@ -21,6 +21,7 @@ const MapViewer: React.FC = () => {
           selectionIndicator={false}
           homeButton={false}
           sceneModePicker={false}
+          fullscreenButton={false}
           ref={ref}
         >
           <CameraFlyTo
