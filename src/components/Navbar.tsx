@@ -8,6 +8,7 @@ import {
   useColorModeValue,
   Stack,
   Divider,
+  Text,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from './Logo';
@@ -67,6 +68,13 @@ export default function Simple() {
               ))}
             </HStack>
           </HStack>
+          <Text
+            fontSize="xl"
+            fontWeight="bold"
+            color={useColorModeValue('green.800', 'green.200')}
+          >
+            SODISOL Orbital Satellite Tracker
+          </Text>
           <HStack
             spacing={2}
             p={2}
