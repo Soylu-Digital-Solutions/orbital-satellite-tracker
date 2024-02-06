@@ -10,6 +10,7 @@ import {
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { ReactNode } from 'react';
 import Logo from './Logo';
+import packageJson from '../../package.json';
 
 const SocialButton = ({
   children,
@@ -60,8 +61,8 @@ export default function Footer() {
       >
         <Logo />
         <Text>
-          © {new Date().getFullYear()} Soylu Digital Solution. All rights
-          reserved.
+          OTS version: {packageJson.version} © {new Date().getFullYear()} Soylu
+          Digital Solution. All rights reserved.
         </Text>
         <Stack direction={'row'} spacing={6}>
           <SocialButton label={'Twitter'} href={'#'}>
