@@ -1,14 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Viewer, CesiumComponentRef, CameraFlyTo } from 'resium';
 import { Viewer as CesiumViewer, Cartesian3 } from 'cesium';
 import { Box, Heading } from '@chakra-ui/react';
 import Satellite from './satellite/Satellite';
 import satellites from './satellites';
 import { useTranslation } from 'react-i18next';
+import SatellitePopup from './SatellitePopup';
 
 const MapViewer: React.FC = () => {
   const { t } = useTranslation();
   const ref = useRef<CesiumComponentRef<CesiumViewer> | null>(null);
+  // set all satellites to selected by default, add their satelliteId to the selectedSatellites array
+  const [selectedSatellites, setSelectedSatellites] = useState<number[]>(
+    Object.values(satellites).map((satellite) => satellite.satelliteId)
+  );
 
   return (
     <section id="map">
@@ -17,6 +22,7 @@ const MapViewer: React.FC = () => {
           {t('map_header')}
         </Heading>
         <Viewer
+          // key={selectedSatellites.join(',')}
           baseLayerPicker={false}
           timeline={false}
           projectionPicker={false}
@@ -25,17 +31,19 @@ const MapViewer: React.FC = () => {
           sceneModePicker={false}
           fullscreenButton={false}
           ref={ref}
+          id="viewer"
         >
           <CameraFlyTo
             destination={Cartesian3.fromDegrees(-101, 35, 10000000)}
           />
-          {Object.values(satellites).map((satellite) => (
-            <Satellite
-              key={satellite.satelliteId}
-              satId={satellite.satelliteId}
-            />
+          {selectedSatellites.map((satelliteId) => (
+            <Satellite key={satelliteId} satId={satelliteId} />
           ))}
         </Viewer>
+        <SatellitePopup
+          setSelectedSatellites={setSelectedSatellites}
+          selectedSatellites={selectedSatellites}
+        />
       </Box>
     </section>
   );
