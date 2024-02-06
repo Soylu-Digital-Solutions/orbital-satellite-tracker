@@ -6,8 +6,8 @@ const Contact: React.FC = () => {
       <Box
         padding="6"
         marginX="auto"
-        boxShadow="lg"
-        rounded="md"
+        boxShadow="2xl"
+        rounded="2xl"
         bg="gray.50"
         my="10"
       >
@@ -16,22 +16,22 @@ const Contact: React.FC = () => {
         </Heading>
         <Stack direction={{ base: 'column', md: 'row' }} spacing="4">
           <Box flex="1">
-            <Text fontSize="md" fontWeight="bold">
+            <Text fontSize="lg" fontWeight="bold">
               Email
             </Text>
-            <Link href="mailto:info@sodisol.com" color="teal.500" fontSize="md">
+            <Link href="mailto:info@sodisol.com" color="teal.500" fontSize="lg">
               info@sodisol.com
             </Link>
           </Box>
           <Box flex="1">
-            <Text fontSize="md" fontWeight="bold">
+            <Text fontSize="lg" fontWeight="bold">
               Website
             </Text>
             <Link
               href="https://sodisol.com"
               isExternal
               color="teal.500"
-              fontSize="md"
+              fontSize="lg"
             >
               sodisol.com
             </Link>

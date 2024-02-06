@@ -6,15 +6,15 @@ const About: React.FC = () => {
       <Box
         padding="6"
         marginX="auto"
-        boxShadow="lg"
-        rounded="md"
+        boxShadow="2xl"
+        rounded="2xl"
         bg="gray.100"
         my="10"
       >
         <Heading as="h2" size="xl">
           About
         </Heading>
-        <Text fontSize="xl">
+        <Text fontSize="lg">
           This is a simple example of a React application using Cesium and
           Chakra UI. It displays a 3D map with satellite models and information.
           The map is built using Cesium, a JavaScript library for creating 3D
