@@ -12,8 +12,8 @@ interface SatelliteInfo {
   satelliteId: number; // satellite's NORAD ID
   name: string; // satellite's name
   country: string; // which country it belongs to, use abbreviation
-  tleRecordTime: number?; // when TLE info is recorded to local storage
-  tle: string?; // two line tle information with new line /r/n
+  tleRecordTime?: number; // when TLE info is recorded to local storage
+  tle?: string; // two line tle information with new line /r/n
 }
 
 // Define the Satellites type as a record where the key is a number (satelliteId) and the value is a SatelliteInfo
