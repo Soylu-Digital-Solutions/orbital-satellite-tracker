@@ -2,6 +2,7 @@
 interface Country {
   name: string;
   flagIcon: string;
+  color: string;
 }
 
 // Define the Countries type as a record where the key is a string (abbreviation) and the value is a Country

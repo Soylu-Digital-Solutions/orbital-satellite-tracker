@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Entity, ModelGraphics } from 'resium';
-import { Cartesian3 } from 'cesium';
+import { Cartesian3, Color } from 'cesium';
 import {
   twoline2satrec,
   propagate,
@@ -18,6 +18,7 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
   const [satelliteData, setSatelliteData] = useState<SatelliteInfo | null>(
     null
   );
+  const [country, setCountry] = useState<Country | null>(null);
 
   // Assuming your .glb file is served from the public folder
   const modelUrl = '/satellite3.glb';
@@ -27,6 +28,7 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
     // get tle information
     getSatelliteInfo(satId).then((data) => {
       setSatelliteData(data);
+      setCountry(countries[data.country]);
       // update satellite position every 1 seconds
       const intervalId = setInterval(() => {
         const newPosition = calculatePosition(data);
@@ -63,14 +65,13 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
   };
 
   // Generate description content for the InfoBox
-  const generateDescription = (data: SatelliteInfo) => {
-    const countryInfo = countries[data.country]; // Use the country abbreviation to get country info
-    const date = new Date(data.tleRecordTime);
+  const generateDescription = () => {
+    const date = new Date(satelliteData.tleRecordTime);
     return `
-      <h1>${data.name}</h1>
-      <p><strong>Country:</strong> <img src="${countryInfo.flagIcon}" alt="${
-      countryInfo.name
-    }" style="width: 20px; height: 13px;"> ${countryInfo.name}</p>
+      <h1>${satelliteData.name}</h1>
+      <p><strong>Country:</strong> <img src="${country.flagIcon}" alt="${
+      country.name
+    }" style="width: 20px; height: 13px;"> ${country.name}</p>
       <p><strong>Last TLE Data retrieval:</strong> ${date.toLocaleDateString()} ${date.toLocaleTimeString()}</p>
     `;
   };
@@ -82,12 +83,13 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
           position={position}
           modelId={satId}
           name={satelliteData?.name}
-          description={generateDescription(satelliteData)}
+          description={generateDescription()}
         >
           <ModelGraphics
             uri={modelUrl}
             minimumPixelSize={100}
             maximumScale={20000}
+            color={Color.fromCssColorString(country?.color || '#ffffff')}
           />
         </Entity>
       )}
