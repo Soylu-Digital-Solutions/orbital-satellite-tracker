@@ -1,0 +1,21 @@
+#content {
+  width: 100%; /* Default width for all screen sizes */
+}
+
+@media only screen and (min-width: 768px) {
+  #content {
+    width: 90%; /* Width for screens larger than or equal to 768px */
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #content {
+    width: 80%; /* Width for screens larger than or equal to 1024px */
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  #content {
+    width: 70%; /* Width for screens larger than or equal to 1440px */
+  }
+}
