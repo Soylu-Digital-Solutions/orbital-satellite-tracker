@@ -1,0 +1,19 @@
+# Material Count: 2
+
+newmtl CentralBody
+Ns 10.0000
+Ka 0.0000 0.0000 0.0000
+Kd 0.8 0.8 0.8
+Ks 0.5 0.5 0.5
+Ni 1.0000
+d 1.0000
+illum 2
+
+newmtl SolarPanel
+Ns 10.0000
+Ka 0.0000 0.0000 0.0000
+Kd 0.1 0.1 0.1
+Ks 0.5 0.5 0.5
+Ni 1.0000
+d 1.0000
+illum 2
