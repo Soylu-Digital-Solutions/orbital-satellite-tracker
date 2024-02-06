@@ -9,12 +9,8 @@ const fromLocalStorage = () => {
   const data = localStorage.getItem(STORAGE_KEY);
   if (data) {
     // parse data to Satellites type
-    const satellites = JSON.parse(data);
-    // check if data is expired
-    if (Date.now() - satellites.tleRecordTime > MAX_AGE) {
-      // if expired, return null
-      return null;
-    }
+    const satellites: Satellites = JSON.parse(data);
+    return satellites;
   }
   return null;
 };
@@ -23,9 +19,23 @@ const fromLocalStorage = () => {
 const getSatelliteInfoFromLocalStorage = (satelliteId: number) => {
   const data = fromLocalStorage();
   if (data) {
+    // check if satelliteId exists in data
+    if (!data[satelliteId]) {
+      return null;
+    }
     // convert data to SatelliteInfo type
     const satelliteInfo: SatelliteInfo = data[satelliteId];
-    return satelliteInfo;
+    // check if data is expired
+    if (
+      !satelliteInfo.tleRecordTime ||
+      Date.now() - satelliteInfo.tleRecordTime > MAX_AGE
+    ) {
+      // if expired, return null
+      return null;
+    } else {
+      // if not expired, return data
+      return satelliteInfo;
+    }
   } else {
     return null;
   }
@@ -35,20 +45,22 @@ const getSatelliteInfoFromLocalStorage = (satelliteId: number) => {
 const getSatelliteInfoFromAPI = async (satelliteId: number) => {
   // get from api
   const data = await getTLE(satelliteId);
-  const satelliteInfo = {
+  const satelliteInfo: SatelliteInfo = {
     satelliteId: satelliteId,
     name: data.info.satname ?? satellites[satelliteId].name,
     country: satellites[satelliteId].country,
     tleRecordTime: Date.now(),
     tle: data.tle,
   };
-  // get data from local storage
+  // get data from local storage with either Satellies type or null
   const localData = fromLocalStorage();
+
   // if local data exists, merge with new data
   if (localData) {
-    const mergedData = { ...localData, [satelliteId]: satelliteInfo };
+    //update local data
+    localData[satelliteId] = satelliteInfo;
     // set to local storage
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(mergedData));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(localData));
   } else {
     // set to local storage
     localStorage.setItem(
