@@ -4,15 +4,17 @@ import { Viewer as CesiumViewer, Cartesian3 } from 'cesium';
 import { Box, Heading } from '@chakra-ui/react';
 import Satellite from './satellite/Satellite';
 import satellites from './satellites';
+import { useTranslation } from 'react-i18next';
 
 const MapViewer: React.FC = () => {
+  const { t } = useTranslation();
   const ref = useRef<CesiumComponentRef<CesiumViewer> | null>(null);
 
   return (
     <section id="map">
       <Box alignItems="center" justifyContent="center">
-        <Heading as="h2" size="xl">
-          Map
+        <Heading as="h2" size="xl" p={1}>
+          {t('map_header')}
         </Heading>
         <Viewer
           baseLayerPicker={false}

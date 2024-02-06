@@ -1,0 +1,9 @@
+{
+  "map_header": "Harita",
+  "about_header": "Hakkında",
+  "about_text": "Bu, Cesium ve Chakra UI kullanarak oluşturulmuş basit bir React uygulaması örneğidir. Uydu modelleri ve bilgileriyle birlikte 3D bir harita görüntüler. Harita, 3D küreler ve haritalar oluşturmak için kullanılan bir JavaScript kütüphanesi olan Cesium kullanılarak oluşturulmuştur. Kullanıcı arayüzü bileşenleri, React uygulamalarınızı oluşturmanız için ihtiyaç duyduğunuz yapı taşlarını size sunan basit, modüler ve erişilebilir bir bileşen kütüphanesi olan Chakra UI kullanılarak oluşturulmuştur.",
+  "contact_header": "İletişim",
+  "contact_email": "E-posta",
+  "contact_website": "Web Sitesi",
+  "navbar_links": ["Hakkında", "Harita", "İletişim"]
+}

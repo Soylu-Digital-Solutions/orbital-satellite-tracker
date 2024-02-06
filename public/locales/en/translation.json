@@ -1,0 +1,9 @@
+{
+  "map_header": "Map",
+  "about_header": "About",
+  "about_text": "This is a simple example of a React application using Cesium and Chakra UI. It displays a 3D map with satellite models and information. The map is built using Cesium, a JavaScript library for creating 3D globes and maps. The UI components are built using Chakra UI, a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.",
+  "contact_header": "Contact",
+  "contact_email": "Email",
+  "contact_website": "Website",
+  "navbar_links": ["About", "Map", "Contact"]
+}

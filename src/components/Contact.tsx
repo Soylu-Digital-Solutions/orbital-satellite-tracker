@@ -1,6 +1,9 @@
 import { Box, Heading, Text, Stack, Link } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
 const Contact: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="contact">
       <Box
@@ -12,12 +15,12 @@ const Contact: React.FC = () => {
         my="10"
       >
         <Heading as="h3" size="lg" marginBottom="4">
-          Contact Us
+          {t('contact_header')}
         </Heading>
         <Stack direction={{ base: 'column', md: 'row' }} spacing="4">
           <Box flex="1">
             <Text fontSize="lg" fontWeight="bold">
-              Email
+              {t('contact_email')}
             </Text>
             <Link href="mailto:info@sodisol.com" color="teal.500" fontSize="lg">
               info@sodisol.com
@@ -25,7 +28,7 @@ const Contact: React.FC = () => {
           </Box>
           <Box flex="1">
             <Text fontSize="lg" fontWeight="bold">
-              Website
+              {t('contact_website')}
             </Text>
             <Link
               href="https://sodisol.com"

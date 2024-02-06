@@ -1,0 +1,9 @@
+{
+  "map_header": "マップ",
+  "about_header": "概要",
+  "about_text": "これは、CesiumとChakra UIを使用したReactアプリケーションのシンプルな例です。衛星モデルと情報を表示する3Dマップを表示します。マップは、3Dグローブとマップを作成するためのJavaScriptライブラリであるCesiumを使用して構築されています。UIコンポーネントは、Reactアプリケーションを構築するために必要なビルディングブロックを提供するシンプルでモジュラーでアクセス可能なコンポーネントライブラリであるChakra UIを使用して構築されています。",
+  "contact_header": "お問い合わせ",
+  "contact_email": "メール",
+  "contact_website": "ウェブサイト",
+  "navbar_links": ["概要", "マップ", "お問い合わせ"]
+}
