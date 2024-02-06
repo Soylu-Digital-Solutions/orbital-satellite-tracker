@@ -41,8 +41,10 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
   }, [satId]);
 
   const calculatePosition = (satInfo: SatelliteInfo) => {
-    const tleLines = satInfo.tle.split('\r\n');
-    if (tleLines.length !== 2) {
+    const tleLines = satInfo.tle?.split('\r\n');
+    if (!tleLines) {
+      throw new Error('Invalid TLE');
+    } else if (tleLines.length !== 2) {
       throw new Error('Invalid TLE');
     }
     // Parse TLE
@@ -52,6 +54,10 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
 
     // Compute position
     const positionAndVelocity = propagate(satrec, now);
+    // if positionAndVelocity.position is boolen then it is error
+    if (typeof positionAndVelocity.position === 'boolean') {
+      throw new Error('Error calculating position');
+    }
 
     // Convert the position to geographic coordinates (latitude, longitude)
     const gmst = gstime(now);
@@ -66,12 +72,13 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
 
   // Generate description content for the InfoBox
   const generateDescription = () => {
+    if (!satelliteData || !satelliteData.tleRecordTime) return '';
     const date = new Date(satelliteData.tleRecordTime);
     return `
-      <h1>${satelliteData.name}</h1>
-      <p><strong>Country:</strong> <img src="${country.flagIcon}" alt="${
-      country.name
-    }" style="width: 20px; height: 13px;"> ${country.name}</p>
+      <h1>${satelliteData?.name}</h1>
+      <p><strong>Country:</strong> <img src="${country?.flagIcon}" alt="${
+      country?.name
+    }" style="width: 20px; height: 13px;"> ${country?.name}</p>
       <p><strong>Last TLE Data retrieval:</strong> ${date.toLocaleDateString()} ${date.toLocaleTimeString()}</p>
     `;
   };
@@ -81,7 +88,6 @@ const Satellite: React.FC<{ satId: number }> = ({ satId }) => {
       {!loading && position && (
         <Entity
           position={position}
-          modelId={satId}
           name={satelliteData?.name}
           description={generateDescription()}
         >
