@@ -1,7 +1,11 @@
 import { Box, Heading, Text, List, ListItem, ListIcon } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
-
 import { useTranslation } from 'react-i18next';
+
+interface ListItemProp {
+  emphasis: string;
+  text: string;
+}
 
 const About: React.FC = () => {
   const { t } = useTranslation();
@@ -28,26 +32,30 @@ const About: React.FC = () => {
         <br />
         <Text fontSize="lg">{t('about.text3')}</Text>
         <List spacing={3}>
-          {t('about.list1', { returnObjects: true }).map((item, index) => (
-            <ListItem key={index}>
-              <ListIcon as={SettingsIcon} color="green.500" />
-              <strong>{item.emphasis + ': '}</strong>
-              {item.text}
-            </ListItem>
-          ))}
+          {(t('about.list1', { returnObjects: true }) as ListItemProp[]).map(
+            (item: ListItemProp, index: number) => (
+              <ListItem key={index}>
+                <ListIcon as={SettingsIcon} color="green.500" />
+                <strong>{item.emphasis + ': '}</strong>
+                {item.text}
+              </ListItem>
+            )
+          )}
         </List>
         <Heading as="h4" size="md" p={2}>
           {t('about.header3')}
         </Heading>
         <Text fontSize="lg">{t('about.text4')}</Text>
         <List spacing={3}>
-          {t('about.list2', { returnObjects: true }).map((item, index) => (
-            <ListItem key={index}>
-              <ListIcon as={SettingsIcon} color="green.500" />
-              <strong>{item.emphasis + ': '}</strong>
-              {item.text}
-            </ListItem>
-          ))}
+          {(t('about.list2', { returnObjects: true }) as ListItemProp[]).map(
+            (item: ListItemProp, index: number) => (
+              <ListItem key={index}>
+                <ListIcon as={SettingsIcon} color="green.500" />
+                <strong>{item.emphasis + ': '}</strong>
+                {item.text}
+              </ListItem>
+            )
+          )}
         </List>
       </Box>
     </section>
