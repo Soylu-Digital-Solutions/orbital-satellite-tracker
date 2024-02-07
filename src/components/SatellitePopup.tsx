@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import countries from './countries';
 import satellites from './satellites';
 import { Heading, Text } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import './popup.css';
 
 interface SatelliteGroup {
@@ -36,18 +37,23 @@ const SatellitePopup = ({
   const [left, setLeft] = useState<number>(0);
   const [resized, setResized] = useState<boolean>(false);
 
+  // Get current language
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
   useEffect(() => {
     const parent = document.getElementById('viewer');
     if (!parent) return;
     setTop(parent.offsetTop + 10);
     setLeft(parent.offsetLeft + 10);
 
+    // Add event listener to handle window resize
     window.addEventListener('resize', toggleResized);
 
     return () => {
       window.removeEventListener('resize', toggleResized);
     };
-  }, [resized]);
+  }, [resized, currentLanguage]);
 
   const toggleResized = () => {
     setResized((prev: boolean) => !prev);
