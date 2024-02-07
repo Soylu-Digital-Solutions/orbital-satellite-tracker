@@ -73,7 +73,7 @@ export default function Simple() {
             fontWeight="bold"
             color={useColorModeValue('green.800', 'green.200')}
           >
-            SODISOL Orbital Satellite Tracker
+            {t('navbar_title')}
           </Text>
           <HStack
             spacing={2}

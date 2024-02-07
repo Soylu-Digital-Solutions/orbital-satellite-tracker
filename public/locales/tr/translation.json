@@ -1,9 +1,45 @@
 {
   "map_header": "Harita",
-  "about_header": "Hakkında",
-  "about_text": "Bu, Cesium ve Chakra UI kullanarak oluşturulmuş basit bir React uygulaması örneğidir. Uydu modelleri ve bilgileriyle birlikte 3D bir harita görüntüler. Harita, 3D küreler ve haritalar oluşturmak için kullanılan bir JavaScript kütüphanesi olan Cesium kullanılarak oluşturulmuştur. Kullanıcı arayüzü bileşenleri, React uygulamalarınızı oluşturmanız için ihtiyaç duyduğunuz yapı taşlarını size sunan basit, modüler ve erişilebilir bir bileşen kütüphanesi olan Chakra UI kullanılarak oluşturulmuştur.",
+  "about": {
+    "header1": "Hakkında",
+    "text1": "Soylu Dijital Çözümlerin (SODISOL) son teknoloji ürünü Yapay Uydu Takip Cihazımıza hoş geldiniz. Ön uç ve arka uç geliştirmede uzman bir şirket olarak, kapsamlı dijital çözümler sunmak için çeşitli diller ve çerçeveler kullanıyoruz. Bu örnek, teknik uzmanlığımızı ve müşterilerimiz için geliştirebileceğimiz yenilikçi uygulamaları sergilemeyi amaçlayan portföyümüzün bir parçasıdır.",
+    "header2": "Bu Örnek Neyi Göstermektedir",
+    "text2": "Yapay Uydu Takip Cihazı, harici API'leri entegre etme ve karmaşık veri görselleştirmelerini kullanıcı dostu ve etkileşimli bir şekilde sunma yeteneğimizi sergilemek üzere tasarlanmıştır. Cesium.js, React ve Chakra kullanıcı arayüzünden yararlanarak teknik becerilerimizi gösteren ve bu teknolojilerin gerçek dünya senaryolarındaki pratik uygulamalarını öne çıkaran bir platform oluşturduk.",
+    "text3": "Bu proje dört ülkeden yapay uydulara odaklanıyor: ABD, Türkiye, Japonya ve Almanya; her biri sırasıyla mavi, kırmızı, yeşil ve sarı olmak üzere farklı renklerle temsil ediliyor. Platform çeşitli etkileşimli özellikler sunuyor:",
+    "list1": [
+      {
+        "emphasis": "Ülke Seçimi",
+        "text": "Kullanıcılar, haritada görüntülenen uyduları filtrelemek için ülke adlarına tıklayabilir, böylece belirli ulusların uydularına odaklanmış bir görünüm elde edilebilir."
+      },
+      {
+        "emphasis": "Uydu Bilgileri",
+        "text": "Bir uyduya tıklandığında kullanıcılara o uydu hakkında detaylı bilgi sunulur."
+      },
+      {
+        "emphasis": "Özelleştirilebilir Ekran",
+        "text": "Her uydu adının yanındaki onay kutuları, kullanıcıların ekranı tercihlerine göre uyarlamalarına ve 3B dünya üzerinde hangi uyduları gerçek zamanlı olarak izleyeceklerini seçmelerine olanak tanır."
+      }
+    ],
+    "header3": "Uygulama Alanları",
+    "text4": "Uydu Takip Sistemi yalnızca teknik gücümüzü gösteren bir vitrin değil; aynı zamanda böyle bir platformun potansiyel ticari uygulamalarını da göstermektedir. Bu teknoloji şu amaçlarla kullanılabilir:",
+    "list2": [
+      {
+        "emphasis": "Operasyonel Yönetim",
+        "text": "Dünya çapında varlıklara sahip şirketler için ideal olan bu teknoloji, gerçek zamanlı takip ve yönetime olanak tanıyarak operasyonel verimlilik ve güvenlik sağlar."
+      },
+      {
+        "emphasis": "Eğitim Araçları",
+        "text": "Eğitim kurumları bu platformu astronomi, coğrafya ve çevre bilimi gibi karmaşık konuları öğretmek için etkileşimli bir araç olarak kullanabilir."
+      },
+      {
+        "emphasis": "Veriye Dayalı Karar Verme",
+        "text": "Hükümetler ve STK'lar bu görselleştirmeleri, özellikle çevresel izleme, afet müdahalesi ve altyapı planlamasında yararlı olan, gerçek zamanlı uydu verilerine dayalı bilinçli kararlar vermek için kullanabilir."
+      }
+    ]
+  },
   "contact_header": "İletişim",
   "contact_email": "E-posta",
   "contact_website": "Web Sitesi",
-  "navbar_links": ["Hakkında", "Harita", "İletişim"]
+  "navbar_links": ["Hakkında", "Harita", "İletişim"],
+  "navbar_title": "SODISOL Uydu Takip Sistemi"
 }

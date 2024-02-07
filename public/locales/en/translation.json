@@ -1,9 +1,45 @@
 {
   "map_header": "Map",
-  "about_header": "About",
-  "about_text": "This is a simple example of a React application using Cesium and Chakra UI. It displays a 3D map with satellite models and information. The map is built using Cesium, a JavaScript library for creating 3D globes and maps. The UI components are built using Chakra UI, a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.",
+  "about": {
+    "header1": "About",
+    "text1": "Welcome to our Artificial Satellite Tracker, a state-of-the-art Soylu Digital Solutions (SODISOL) demonstration. As a company adept in front-end and back-end development, we utilize diverse languages and frameworks to deliver comprehensive digital solutions. This example is part of our portfolio, aimed at showcasing our technical expertise and the innovative applications we can develop for our clients.",
+    "header2": "What This Example Demonstrates",
+    "text2": "The Artificial Satellite Tracker is designed to showcase our capability to integrate external APIs and present complex data visualizations in a user-friendly and interactive manner. By leveraging Cesium.js, React, and Chakra UI, we have created a platform that demonstrates our technical skills and highlights the practical applications of these technologies in real-world scenarios.",
+    "text3": "This project focuses on artificial satellites from four countries: the USA, Turkey, Japan, and Germany, each represented by distinct colors—blue, red, green, and yellow, respectively. The platform offers several interactive features:",
+    "list1": [
+      {
+        "emphasis": "Country Selection",
+        "text": "Users can click on the names of the countries to filter the satellites displayed on the map, allowing for a focused view on satellites from specific nations."
+      },
+      {
+        "emphasis": "Satellite Information",
+        "text": "Clicking on a satellite provides users with detailed information about it."
+      },
+      {
+        "emphasis": "Customizable Display",
+        "text": "Checkboxes next to each satellite name enable users to tailor the display to their preferences, choosing which satellites to track in real-time on the 3D globe."
+      }
+    ],
+    "header3": "Commercial Applications",
+    "text4": "The Artificial Satellite Tracker is not just a showcase of our technical prowess; it also illustrates the potential commercial applications of such a platform. This technology can be leveraged for:",
+    "list2": [
+      {
+        "emphasis": "Asset Tracking",
+        "text": "Ideal for companies with assets across the globe, this technology can be used for real-time tracking and management, ensuring operational efficiency and security."
+      },
+      {
+        "emphasis": "Educational Tools",
+        "text": "Educational institutions can utilize this platform as an interactive tool to aid in teaching complex subjects such as astronomy, geography, and environmental science."
+      },
+      {
+        "emphasis": "Data-Driven Decision Making",
+        "text": "Governments and NGOs can use these visualizations to make informed decisions based on real-time satellite data, particularly useful in environmental monitoring, disaster response, and infrastructure planning."
+      }
+    ]
+  },
   "contact_header": "Contact",
   "contact_email": "Email",
   "contact_website": "Website",
-  "navbar_links": ["About", "Map", "Contact"]
+  "navbar_links": ["About", "Map", "Contact"],
+  "navbar_title": "SODISOL Artificial Satellite Tracker"
 }
