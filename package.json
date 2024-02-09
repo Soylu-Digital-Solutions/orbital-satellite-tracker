@@ -3,6 +3,21 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "keywords": [
+    "vite",
+    "react",
+    "typescript",
+    "cesium",
+    "resium",
+    "satellite.js",
+    "i18next",
+    "chakra-ui"
+  ],
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Mustafa Soylu",
+    "email": "mohkargan@gmail.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
