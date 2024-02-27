@@ -30,11 +30,12 @@ const MapViewer: React.FC = () => {
           homeButton={false}
           sceneModePicker={false}
           fullscreenButton={false}
-          imageryProvider={false}
           ref={ref}
           id="viewer"
         >
-          <ImageryLayer imageryProvider={new OpenStreetMapImageryProvider()} />
+          <ImageryLayer
+            imageryProvider={new OpenStreetMapImageryProvider({})}
+          />
 
           {selectedSatellites.map((satelliteId) => (
             <Satellite key={satelliteId} satId={satelliteId} />
