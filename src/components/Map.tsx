@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Viewer, CesiumComponentRef } from 'resium';
-import { Viewer as CesiumViewer } from 'cesium';
+import { Viewer, CesiumComponentRef, ImageryLayer } from 'resium';
+import { Viewer as CesiumViewer, OpenStreetMapImageryProvider } from 'cesium';
 import { Box, Heading } from '@chakra-ui/react';
 import Satellite from './satellite/Satellite';
 import satellites from './satellites';
@@ -30,9 +30,12 @@ const MapViewer: React.FC = () => {
           homeButton={false}
           sceneModePicker={false}
           fullscreenButton={false}
+          imageryProvider={false}
           ref={ref}
           id="viewer"
         >
+          <ImageryLayer imageryProvider={new OpenStreetMapImageryProvider()} />
+
           {selectedSatellites.map((satelliteId) => (
             <Satellite key={satelliteId} satId={satelliteId} />
           ))}
