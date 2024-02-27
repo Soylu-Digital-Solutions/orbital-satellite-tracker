@@ -42,5 +42,6 @@
   "contact_email": "メール",
   "contact_website": "ウェブサイト",
   "navbar_links": ["概要", "マップ", "お問い合わせ"],
-  "navbar_title": "SODISOL人工衛星トラッカー"
+  "navbar_title": "SODISOL人工衛星トラッカー",
+  "details": "詳細"
 }

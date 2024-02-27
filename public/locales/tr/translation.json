@@ -41,5 +41,6 @@
   "contact_email": "E-posta",
   "contact_website": "Web Sitesi",
   "navbar_links": ["Hakkında", "Harita", "İletişim"],
-  "navbar_title": "SODISOL Uydu Takip Sistemi"
+  "navbar_title": "SODISOL Uydu Takip Sistemi",
+  "details": "Detaylar"
 }

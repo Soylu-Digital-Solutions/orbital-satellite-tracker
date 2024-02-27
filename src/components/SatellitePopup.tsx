@@ -35,7 +35,6 @@ const SatellitePopup = ({
   const [openCountries, setOpenCountries] = useState<OpenCountries>({});
   const [top, setTop] = useState<number>(0);
   const [left, setLeft] = useState<number>(0);
-  const [resized, setResized] = useState<boolean>(false);
 
   // Get current language
   const { i18n } = useTranslation();
@@ -44,20 +43,29 @@ const SatellitePopup = ({
   useEffect(() => {
     const parent = document.getElementById('viewer');
     if (!parent) return;
-    setTop(parent.offsetTop + 10);
-    setLeft(parent.offsetLeft + 10);
 
-    // Add event listener to handle window resize
-    window.addEventListener('resize', toggleResized);
-
-    return () => {
-      window.removeEventListener('resize', toggleResized);
+    const updatePosition = () => {
+      setTop(parent.offsetTop + 10);
+      setLeft(parent.offsetLeft + 10);
     };
-  }, [resized, currentLanguage]);
 
-  const toggleResized = () => {
-    setResized((prev: boolean) => !prev);
-  };
+    updatePosition(); // Initial position update
+
+    // Observer for changes in the layout
+    const config = { attributes: true, childList: true, subtree: true };
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList' || mutation.type === 'attributes') {
+          updatePosition();
+        }
+      }
+    });
+
+    observer.observe(document.body, config);
+
+    // Clean up
+    return () => observer.disconnect();
+  }, [currentLanguage]);
 
   const toggleCountry = (country: string) => {
     setOpenCountries((prev) => ({ ...prev, [country]: !prev[country] }));

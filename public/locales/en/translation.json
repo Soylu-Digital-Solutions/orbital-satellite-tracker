@@ -41,5 +41,6 @@
   "contact_email": "Email",
   "contact_website": "Website",
   "navbar_links": ["About", "Map", "Contact"],
-  "navbar_title": "SODISOL Artificial Satellite Tracker"
+  "navbar_title": "SODISOL Artificial Satellite Tracker",
+  "details": "Details"
 }
