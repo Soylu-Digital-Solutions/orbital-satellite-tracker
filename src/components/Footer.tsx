@@ -7,7 +7,9 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from '@chakra-ui/react';
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
+import { MdAlternateEmail } from 'react-icons/md';
+
 import { ReactNode } from 'react';
 import Logo from './Logo';
 import packageJson from '../../package.json';
@@ -65,14 +67,14 @@ export default function Footer() {
           Digital Solution. All rights reserved.
         </Text>
         <Stack direction={'row'} spacing={6}>
-          <SocialButton label={'Twitter'} href={'#'}>
-            <FaTwitter />
+          <SocialButton
+            label={'Github'}
+            href={'https://github.com/Soylu-Digital-Solutions'}
+          >
+            <FaGithub />
           </SocialButton>
-          <SocialButton label={'YouTube'} href={'#'}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={'Instagram'} href={'#'}>
-            <FaInstagram />
+          <SocialButton label={'Email'} href={'mailto:info@sodisol.com'}>
+            <MdAlternateEmail />
           </SocialButton>
         </Stack>
       </Container>
