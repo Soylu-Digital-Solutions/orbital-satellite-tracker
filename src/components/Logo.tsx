@@ -1,4 +1,4 @@
-import ostLogo from '/logo.png';
+import ostLogo from '/earth-64.png';
 import { chakra } from '@chakra-ui/react';
 
 const Logo = () => {
