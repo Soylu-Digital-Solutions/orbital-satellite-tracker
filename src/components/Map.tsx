@@ -24,8 +24,6 @@ const MapViewer: React.FC = () => {
           {t('map_header')}
         </Heading>
         <Viewer
-          // key={selectedSatellites.join(',')}
-          baseLayerPicker={false}
           timeline={false}
           projectionPicker={false}
           selectionIndicator={false}
