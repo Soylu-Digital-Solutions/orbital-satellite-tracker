@@ -50,8 +50,8 @@ jobs:
           tags: soylumu/orbital-satellite-tracker:${{ env.COMMIT_DATE }},soylumu/orbital-satellite-tracker:latest
           platforms: linux/arm64
           build-args: |
-            VITE_CESIUM_TOKEN=${VITE_CESIUM_TOKEN}
-            VITE_N2YO_API_KEY=${VITE_N2YO_API_KEY}
+            VITE_CESIUM_TOKEN=${{ env.VITE_CESIUM_TOKEN }}
+            VITE_N2YO_API_KEY=${{ env.VITE_N2YO_API_KEY }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
