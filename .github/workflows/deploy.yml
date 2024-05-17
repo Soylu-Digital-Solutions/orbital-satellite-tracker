@@ -37,7 +37,7 @@ jobs:
         env:
           VITE_CESIUM_TOKEN: ${{ secrets.VITE_CESIUM_TOKEN }}
           VITE_N2YO_API_KEY: ${{ secrets.VITE_N2YO_API_KEY }}
-        run: docker build . -t soylumu/orbital-satellite-tracker:latest --build-arg VITE_CESIUM_TOKEN=${{ secrets.VITE_CESIUM_TOKEN }} --build-arg VITE_N2YO_API_KEY=${{ secrets.VITE_N2YO_API_KEY }}
+        run: docker buildx build --platform linux/amd64 . -t soylumu/orbital-satellite-tracker:latest --build-arg VITE_CESIUM_TOKEN=${{ secrets.VITE_CESIUM_TOKEN }} --build-arg VITE_N2YO_API_KEY=${{ secrets.VITE_N2YO_API_KEY }}
 
       - name: Push Docker image
         run: docker push soylumu/orbital-satellite-tracker:latest
