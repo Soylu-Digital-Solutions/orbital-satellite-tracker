@@ -1,5 +1,5 @@
 # Use a Node.js base image
-FROM node:18.18.2-alpine3.18 as build
+FROM --platform=linux/amd64 node:18.18.2-alpine3.18 as build
 
 # Set the working directory
 WORKDIR /app
@@ -24,7 +24,7 @@ ENV VITE_N2YO_API_KEY=$VITE_N2YO_API_KEY
 RUN pnpm run build
 
 # Use a lightweight web server to serve the built files
-FROM nginx:1.26-alpine3.19
+FROM --platform=linux/amd64 nginx:1.26-alpine3.19
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
