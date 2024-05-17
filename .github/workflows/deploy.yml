@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: user/app:latest
+          tags: soylumu/orbital-satellite-tracker:${{ format('yyyyMMdd', github.event.head_commit.timestamp) }}, soylumu/orbital-satellite-tracker:latest
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           build-args: |
             VITE_CESIUM_TOKEN=${VITE_CESIUM_TOKEN}
