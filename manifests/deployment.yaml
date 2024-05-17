@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orbital-satellite-tracker
+  labels:
+    app: orbital-satellite-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orbital-satellite-tracker
+  template:
+    metadata:
+      labels:
+        app: orbital-satellite-tracker
+    spec:
+      containers:
+        - name: orbital-satellite-tracker
+          image: soylumu/orbital-satellite-tracker:latest
+          ports:
+            - containerPort: 80
