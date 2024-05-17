@@ -4,6 +4,7 @@ metadata:
   name: orbital-satellite-tracker-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: 'letsencrypt-prod'
 spec:
   rules:
     - host: satellites.sodisol.com
@@ -16,3 +17,7 @@ spec:
                 name: orbital-satellite-tracker
                 port:
                   number: 80
+  tls:
+    - hosts:
+        - satellites.sodisol.com
+      secretName: orbital-satellite-tracker-tls
