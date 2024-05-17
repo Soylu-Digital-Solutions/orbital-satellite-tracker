@@ -1,0 +1,54 @@
+name: Create a Docker image and deploy to Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.18.2'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build the project
+        env:
+          VITE_CESIUM_TOKEN: ${{ secrets.VITE_CESIUM_TOKEN }}
+          VITE_N2YO_API_KEY: ${{ secrets.VITE_N2YO_API_KEY }}
+        run: pnpm run build
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        env:
+          VITE_CESIUM_TOKEN: ${{ secrets.VITE_CESIUM_TOKEN }}
+          VITE_N2YO_API_KEY: ${{ secrets.VITE_N2YO_API_KEY }}
+        run: docker build . -t soylumu/orbital-satellite-tracker:latest --build-arg VITE_CESIUM_TOKEN=${{ secrets.VITE_CESIUM_TOKEN }} --build-arg VITE_N2YO_API_KEY=${{ secrets.VITE_N2YO_API_KEY }}
+
+      - name: Push Docker image
+        run: docker push soylumu/orbital-satellite-tracker:latest
+
+      - name: Set up kubectl
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
+          kubectl apply -f ingress.yaml
